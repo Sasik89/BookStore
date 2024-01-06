@@ -1,0 +1,25 @@
+.position {
+    width: 100%;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 10px;
+    font-size: 20px;
+    margin: 10px auto;
+    cursor: default;
+}
+
+.position div {
+    display: inline-block;
+}
+
+.title {
+    width: 30%;
+}
+
+.author {
+    width: 30%;
+}
+
+.quantity, .price, .sum {
+    width: 11%;
+}

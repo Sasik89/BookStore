@@ -1,0 +1,41 @@
+.order {
+    width: 100%;
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 10px;
+    font-size: 20px;
+    margin: 10px auto;
+    cursor: default;
+    }
+
+.order:hover .position {
+    display: block!important;
+
+}
+
+.order .id, .order .date, .order .status, .order .positions-count, .order .total {
+        display: inline-block;
+        width: 19%;
+    }
+
+.order .position {
+    display: none;
+    width: 90%;
+    margin 10px auto;
+}
+
+.order .position div{
+    display: inline-block;
+}
+
+.order .position .title {
+    width: 30%;
+}
+
+.order .position .author {
+    width: 30%;
+}
+
+.position .quantity, .position .price, .position .sum {
+    width: 11%;
+}

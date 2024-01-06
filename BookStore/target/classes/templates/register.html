@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="httt://wwww.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Book Store</title>
+  <link rel="stylesheet" href="/common.css">
+  <link rel="stylesheet" href="/login.css">
+  <script src="/register-validator.js"></script>
+</head>
+<body>
+<div th:replace="~{fragments.html :: logo}"></div>
+<div th:replace="~{fragments.html :: menu}"></div>
+<div id="content">
+  <form method="post" onsubmit="return validate()">
+    <div id="info"></div>
+    <input type="text" class="input" placeholder="Imie" id="name" th:field="*{userModel.name}">
+    <input type="text" class="input" placeholder="Nazwisko" id="surname" th:field="*{userModel.surname}">
+    <input type="text" class="input" placeholder="Email" id="email" th:field="*{userModel.email}">
+    <input type="text" class="input" placeholder="Login" id="login" th:field="*{userModel.login}">
+    <input type="password" class="input" placeholder="Hasło" id="password" th:field="*{userModel.password}">
+    <input type="password" name="password2" id="password2" class="input" placeholder="Powtórz hasło">
+    <input type="submit" value="Zarejestruj" class="button">
+  </form>
+
+</div>
+</body>
+</html>

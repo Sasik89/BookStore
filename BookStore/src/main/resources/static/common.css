@@ -1,0 +1,74 @@
+#logo {
+    width: 400px;
+    height: 400px;
+    margin: 15px auto;
+}
+
+#logo img {
+    width: 400px;
+    height: 400px;
+    margin: 0;
+    padding: 0;
+}
+
+#menu {
+    height: 40px;
+    text-align: center;
+    border-top: 1px solid black;
+}
+
+.button {
+    font-size: 20px;
+    margin: 5px 25px;
+    text-decoration: none;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 5px 10px;
+    color: black;
+    display: inline-block;
+    transition: border, color, background-color 1s;
+    cursor: pointer;
+    background-color: white;
+}
+
+.button:hover {
+    border: 2px solid red;
+    color: white;
+    background-color: red;
+}
+
+#content {
+    margin: 20px auto;
+    width: 80%;
+    text-align: center;
+
+}
+
+.input{
+    font-size: 20px;
+    margin: 5px 25px;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 5px 10px;
+    color: black;
+    display: inline-block;
+    text-align: center;
+    transition: border, color, background-color 1s;
+}
+
+.input.hover {
+    border: 2px solid red;
+    color: white;
+    background-color: red;
+}
+
+.add-to-cart, .delete, .update {
+    font-size: 15px;
+    padding: 5px;
+    margin: 5px 5px;
+    border: 2px solid black;
+    border-radius: 5px;
+    text-decoration: none;
+    color: black;
+    background-color: white;
+}
