@@ -51,4 +51,14 @@ public class CartController {
         }
         return "redirect:/main";
     }
+
+
+    @RequestMapping(path = "/remove/{bookId}", method = RequestMethod.GET)
+    public String remove(@PathVariable int bookId){
+        this.cartService.removeFromCart(bookId);
+        return "redirect:/cart";
+    }
+
+
+
 }

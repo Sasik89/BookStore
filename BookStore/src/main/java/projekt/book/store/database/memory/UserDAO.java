@@ -26,12 +26,13 @@ public class UserDAO implements IUserRepository {
 
     @Override
     public Optional<User> getByLogin(String login) {
-        for(User user : this.users) {
+/*        for(User user : this.users) {
             if(user.getLogin().equals(login)){
                 return Optional.of(User.copyOf(user));
             }
         }
-        return Optional.empty();
+        return Optional.empty();*/
+       return this.users.stream().filter(u -> u.getLogin().equals(login)).findFirst();
     }
 
     @Override

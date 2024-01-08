@@ -24,7 +24,7 @@ public class BookServiceImpl implements IBookService {
     @Override
     public List<Book> getFilteredBook(String pattern) {
         List<Book> books = getAllBooks();
-        List<Book> filtered = new ArrayList<>();
+/*        List<Book> filtered = new ArrayList<>();
         for(Book book : books) {
             if(book.getTitle()
                     .toLowerCase()
@@ -35,7 +35,10 @@ public class BookServiceImpl implements IBookService {
                 filtered.add(book);
             }
         }
-        return filtered;
+        return filtered;*/
+       return books.stream().filter(b -> b.getTitle().toLowerCase().contains(pattern.toLowerCase())
+            || b.getAuthor().toLowerCase().contains(pattern.toLowerCase())).toList();
+
     }
 
     @Override

@@ -26,22 +26,24 @@ public class OrderDAO implements IOrderDAO {
 
     @Override
     public List<Order> getOrdersByUserId(int userId) {
-        List<Order> result = new ArrayList<>();
+/*        List<Order> result = new ArrayList<>();
         for(Order order : this.orders){
             if(order.getUser().getId() == userId){
                 result.add(order);
             }
         }
-        return result;
+        return result;*/
+       return this.orders.stream().filter(o -> o.getUser().getId() == userId).toList();
     }
 
     @Override
     public Optional<Order> getOrderById(int id) {
-        for(Order order : this.orders) {
+/*        for(Order order : this.orders) {
             if(order.getId() == id) {
                 return Optional.of(order);
             }
         }
-        return Optional.empty();
+        return Optional.empty();*/
+       return this.orders.stream().filter(o-> o.getId() == id).findFirst();
     }
 }

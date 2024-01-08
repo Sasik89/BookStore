@@ -88,13 +88,20 @@ public class CartServiceImpl implements ICartService {
     }
 
     @Override
-    public void removeFromCart(int id) {
+    public void removeFromCart(final int id) {
         Set<OrderPosition> orderPositions = this.sessionData.getCart().getPositions();
-        for (OrderPosition orderPosition : orderPositions)
+/*        for (OrderPosition orderPosition : orderPositions) {
             if (orderPosition.getBook().getId() == id) {
                 orderPositions.remove(orderPosition);
                 return;
             }
+        }*/
+        Optional<OrderPosition> orderToRemoveBox = this.sessionData.getCart().getPositions().stream()
+                .filter(orderPosition -> orderPosition.getBook().getId() == id)
+                .findFirst();
+        if(orderToRemoveBox.isPresent()){
+            this.sessionData.getCart().getPositions().remove(orderToRemoveBox.get());
+        }
     }
 
     @Override
