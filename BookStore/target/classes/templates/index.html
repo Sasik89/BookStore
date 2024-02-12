@@ -5,6 +5,8 @@
     <title>Book Store</title>
     <link rel="stylesheet" href="/common.css">
     <link rel="stylesheet" href="/book.css">
+    <script src="/index.js"></script>
+    <script src="/jquery-3.7.1.min.js"></script>
 </head>
 <body>
 <div th:replace="~{fragments.html :: logo}"></div>
@@ -22,7 +24,7 @@
         <div th:text="'ISBN ' + ${book.isbn}" class="isbn"></div>
         <a th:if="${admin}" th:href="@{/book/update/{id}(id=${book.id})}" class="update">Update</a>
         <a th:if="${admin}" th:href="@{/book/delete/{id}(id=${book.id})}" class="delete">Delete</a>
-        <a th:if="${logged}" th:href="@{/cart/add/{id}(id=${book.id})}" class="add-to-cart">Dodaj do koszyka</a>
+        <div th:if="${logged}" th:onclick="|addToCart('${book.id}')|" class="button" th:href="@{/cart/add/{id}(id=${book.id})}">Dodaj do koszyka</div>
     </div>
 </div>
 </body>

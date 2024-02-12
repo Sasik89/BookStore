@@ -9,8 +9,7 @@ import projekt.book.store.model.Order;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
-@Repository
+//@Repository
 public class OrderDAO implements IOrderDAO {
 
     @Autowired

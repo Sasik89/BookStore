@@ -73,17 +73,20 @@ public class CartServiceImpl implements ICartService {
         if(positionChanged) {
             return;
         }
-        Order order = new Order();
+        final Order order = new Order();
         order.setUser(this.sessionData.getUser());
-        order.getOrderPosition().addAll(this.sessionData.getCart().getPositions());
+        //order.getOrderPosition().addAll(this.sessionData.getCart().getPositions()); //działa bez implementacji Hibernate
+        this.sessionData.getCart().getPositions().stream()
+                .peek(op->op.getBook().setQuantity(booksToUpdateWithQuantity.get(op.getBook())))
+                        .forEach(order::addOrderPossition);
         order.setStatus(Order.Status.NEW);
         order.setTotal(this.calculateCartSum());
         order.setDateTime(LocalDateTime.now());
         this.orderDAO.persistOrder(order);
-        for(Map.Entry<Book, Integer> entry : booksToUpdateWithQuantity.entrySet()) {
+/*        for(Map.Entry<Book, Integer> entry : booksToUpdateWithQuantity.entrySet()) {
             entry.getKey().setQuantity(entry.getValue());
             this.bookDAO.updateBook(entry.getKey());
-        }
+        }*/
         this.clearCart();
     }
 

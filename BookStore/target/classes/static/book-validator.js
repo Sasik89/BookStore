@@ -16,7 +16,7 @@ function validate(){
     var result = true;
     var infoResult = "";
 
-    if(!titleRegex.test(title.value)) {
+    if(!titleRegex.test(title.value) || price.value == 0) {
         infoResult = infoResult + "Złe tytuł !!! <br>";
         title.style.background = "#fcc2c2";
         result = false;

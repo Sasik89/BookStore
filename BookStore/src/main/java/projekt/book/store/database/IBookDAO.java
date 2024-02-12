@@ -9,11 +9,12 @@ import java.util.Optional;
 public interface IBookDAO {
 
     List<Book> getAllBooks();
-    void persistBook(Book book);
+    List<Book> getByPattern(String pattern);
+    Optional<Book> persistBook(Book book);
     Optional<Book> getBookById(int id);
     void deleteBook(int id);
 
-    void updateBook(Book book);
+    Optional<Book> updateBook(Book book);
 
 
 

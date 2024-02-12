@@ -2,8 +2,7 @@ package projekt.book.store.database.sequence;
 
 import org.springframework.stereotype.Component;
 import projekt.book.store.servives.IBookService;
-
-@Component
+//@Component
 public class BookIdSequence implements IBookIdSequence {
 
 

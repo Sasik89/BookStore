@@ -10,10 +10,10 @@ public interface IBookService {
     List<Book> getAllBooks();
     List<Book> getFilteredBook(String pattern);
 
-    void persistBook(Book book);
+    Optional<Book> persistBook(Book book);
 
     Optional<Book> getBookById(int id);
-    void updateBook(Book book);
+    Optional<Book> updateBook(Book book);
     void deleteBook(int id);
 
 

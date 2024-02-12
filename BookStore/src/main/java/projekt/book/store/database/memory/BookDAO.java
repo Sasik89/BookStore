@@ -10,8 +10,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
-
-@Repository
+//@Repository
 public class BookDAO implements IBookDAO {
 
 
@@ -34,9 +33,15 @@ public class BookDAO implements IBookDAO {
     }
 
     @Override
-    public void persistBook(Book book) {
+    public List<Book> getByPattern(String pattern) {
+        throw new RuntimeException();
+    }
+
+    @Override
+    public Optional<Book> persistBook(Book book) {
         book.setId(this.bookIdSequence.getId());
         this.books.add(book);
+        return Optional.of(book);
     }
 
     @Override
@@ -66,7 +71,7 @@ public class BookDAO implements IBookDAO {
     }
 
     @Override
-    public void updateBook(Book book) {
+    public Optional<Book> updateBook(Book book) {
     /*    Iterator<Book> iterator = this.books.iterator();
         while(iterator.hasNext()) {
             if(iterator.next().getId() == book.getId()){
@@ -80,5 +85,7 @@ public class BookDAO implements IBookDAO {
             this.books.remove(bookBox.get());
             this.books.add(book);
         }
+        return Optional.of(book);
     }
+
 }

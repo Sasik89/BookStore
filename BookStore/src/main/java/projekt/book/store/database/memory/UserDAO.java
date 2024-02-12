@@ -8,8 +8,7 @@ import projekt.book.store.model.User;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
-@Repository
+//@Repository
 public class UserDAO implements IUserRepository {
 
     private final List<User> users = new ArrayList<>();
@@ -32,7 +31,14 @@ public class UserDAO implements IUserRepository {
             }
         }
         return Optional.empty();*/
-       return this.users.stream().filter(u -> u.getLogin().equals(login)).findFirst();
+       return this.users.stream()
+               .filter(u -> u.getLogin().equals(login)).findFirst()
+               .map(user -> User.copyOf(user));
+    }
+
+    @Override
+    public Optional<User> getById(int id) {
+        return this.users.stream().filter(u -> u.getId() == id).findFirst();
     }
 
     @Override
@@ -40,6 +46,5 @@ public class UserDAO implements IUserRepository {
         user.setId(this.userIdSequence.getId());
         this.users.add(user);
     }
-
 
 }

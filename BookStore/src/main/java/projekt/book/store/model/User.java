@@ -1,6 +1,7 @@
 package projekt.book.store.model;
 
 
+import jakarta.persistence.*;
 import lombok.*;
 
 @NoArgsConstructor
@@ -9,13 +10,19 @@ import lombok.*;
 @Setter
 @ToString
 @EqualsAndHashCode
+@Entity(name = "tuser")
 public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(unique = true)
     private String login;
     private String password;
     private String name;
     private String surname;
     private String email;
+    @Enumerated(EnumType.STRING)
     private Role role;
 
     public static User copyOf(User user){
@@ -29,6 +36,10 @@ public class User {
             result.login = user.login;
             return result;
         }
+
+    public User(int id) {
+        this.id = id;
+    }
 
     public enum Role {
         ADMIN,

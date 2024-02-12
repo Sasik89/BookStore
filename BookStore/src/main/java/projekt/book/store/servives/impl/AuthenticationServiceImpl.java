@@ -1,7 +1,6 @@
 package projekt.book.store.servives.impl;
 
 import jakarta.annotation.Resource;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.apache.commons.codec.digest.DigestUtils;

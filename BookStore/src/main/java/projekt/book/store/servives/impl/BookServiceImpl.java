@@ -6,7 +6,6 @@ import projekt.book.store.database.IBookDAO;
 import projekt.book.store.model.Book;
 import projekt.book.store.servives.IBookService;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,8 +22,9 @@ public class BookServiceImpl implements IBookService {
 
     @Override
     public List<Book> getFilteredBook(String pattern) {
-        List<Book> books = getAllBooks();
-/*        List<Book> filtered = new ArrayList<>();
+        return this.bookDAO.getByPattern(pattern);
+/*        List<Book> books = getAllBooks();
+        List<Book> filtered = new ArrayList<>();
         for(Book book : books) {
             if(book.getTitle()
                     .toLowerCase()
@@ -35,15 +35,16 @@ public class BookServiceImpl implements IBookService {
                 filtered.add(book);
             }
         }
-        return filtered;*/
-       return books.stream().filter(b -> b.getTitle().toLowerCase().contains(pattern.toLowerCase())
+        return filtered;
+      *//* return books.stream().filter(b -> b.getTitle().toLowerCase().contains(pattern.toLowerCase())
             || b.getAuthor().toLowerCase().contains(pattern.toLowerCase())).toList();
-
+*/
     }
 
     @Override
-    public void persistBook(Book book) {
+    public Optional<Book> persistBook(Book book) {
         this.bookDAO.persistBook(book);
+        return Optional.of(book);
     }
 
     @Override
@@ -52,8 +53,8 @@ public class BookServiceImpl implements IBookService {
     }
 
     @Override
-    public void updateBook(Book book) {
-        this.bookDAO.updateBook(book);
+    public Optional<Book> updateBook(Book book) {
+        return this.bookDAO.updateBook(book);
     }
 
     @Override
